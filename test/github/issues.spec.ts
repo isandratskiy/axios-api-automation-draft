@@ -34,6 +34,7 @@ describe("Issues controller", () => {
             .body({
                 number: issueNumber,
                 state: 'closed'
-            }).send()
+            })
+            .send()
     })
 });
