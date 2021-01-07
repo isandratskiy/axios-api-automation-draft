@@ -1,6 +1,6 @@
-import {ProductIdType, UserRequestType} from "../src/types";
+import {ProductIdType, UserRequestType} from "../../src/sockshop/types";
 import * as fake from 'faker';
-import {cartApi, catalogApi, userApi} from "../src/api";
+import {cartApi, catalogApi, userApi} from "../../src/sockshop/api";
 import {expect} from "chai";
 
 describe("Cart controller", () => {

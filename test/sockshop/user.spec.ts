@@ -1,6 +1,6 @@
-import {userApi} from "../src/api";
+import {userApi} from "../../src/sockshop/api";
 import * as fake from 'faker';
-import {UserRequestType} from "../src/types";
+import {UserRequestType} from "../../src/sockshop/types";
 import {expect} from "chai";
 
 describe("User controller", () => {
