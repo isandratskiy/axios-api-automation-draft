@@ -1,0 +1,19 @@
+name: Run API-Automation Tests
+
+on:
+  push:
+    branches:
+      - 'master'
+  schedule:
+    - cron: '0 3 * * 0-6'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Run API Automation tests
+        env:
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+        run: npm cit
