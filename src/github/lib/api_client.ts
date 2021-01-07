@@ -14,24 +14,24 @@ export class ApiClient {
         }
     }
 
-    public static api(baseURL: string): ApiClient {
+    static api(baseURL: string): ApiClient {
         return new ApiClient(baseURL)
     }
 
-    public post(path: string): ApiClient {
+    post(path: string): ApiClient {
         this.options.url = path
         this.options.method = 'post'
         return this
     }
 
-    public get(path?: string): ApiClient {
+    get(path?: string): ApiClient {
         this.options.url = path
         this.options.method = 'get'
         this.options.data = undefined
         return this
     }
 
-    public delete(path: string): ApiClient {
+    delete(path: string): ApiClient {
         this.options.url = path
         this.options.method = 'delete'
         return this
@@ -43,12 +43,12 @@ export class ApiClient {
         return this
     }
 
-    public body(body: any): ApiClient {
+    body(body: any): ApiClient {
         this.options.data = body
         return this
     }
 
-    public async send(): Promise<any> {
+    async send(): Promise<any> {
         const response = await axios.request(this.options)
         return response.data
     }
