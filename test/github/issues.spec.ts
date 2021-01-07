@@ -9,29 +9,29 @@ describe("Issues controller", () => {
 
     beforeEach(async () => {
         issue = {
-            owner: fake.name.firstName(),
-            title: fake.random.alphaNumeric(10)
+            title: fake.random.uuid()
         }
 
         http = ApiClient.api(`https://api.github.com/repos/isandratskiy`)
-        await http.post('api-automation-draft/issues').body(issue).send()
+        await http.post('axios-api-automation-draft/issues').body(issue).send()
     })
 
     test('should return created issue', async () => {
-        const issues: Issue[] = await http.get('api-automation-draft/issues').send()
+        const issues: Issue[] = await http.get('axios-api-automation-draft/issues').send()
         const receivedIssue: Issue = issues.find(it => it.title = issue.title)
         issueNumber = receivedIssue.number
         expect(receivedIssue.title).toBe(issue.title)
     });
 
     test('should update issue', async () => {
-
+        const issues: Issue[] = await http.get('axios-api-automation-draft/issues').send()
+        const receivedIssue: Issue = issues.find(it => it.title = issue.title)
+        issueNumber = receivedIssue.number
     });
 
     afterEach(async () => {
-        await http.patch(`api-automation-draft/issues/${issueNumber}`)
+        await http.patch(`axios-api-automation-draft/issues/${issueNumber}`)
             .body({
-                owner: issue.owner,
                 title: issue.title,
                 number: issueNumber,
                 state: 'closed'
