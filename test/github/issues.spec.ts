@@ -4,8 +4,8 @@ import {Issue} from "../../src/github/types/issue_type";
 
 describe("Issues controller", () => {
     let http: ApiClient
-    let issue
-    let issueNumber
+    let issue: any
+    let issueNumber: number
 
     beforeEach(async () => {
         issue = {
@@ -32,7 +32,6 @@ describe("Issues controller", () => {
     afterEach(async () => {
         await http.patch(`axios-api-automation-draft/issues/${issueNumber}`)
             .body({
-                title: issue.title,
                 number: issueNumber,
                 state: 'closed'
             }).send()

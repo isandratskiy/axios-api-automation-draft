@@ -8,6 +8,7 @@ export class ApiClient {
             baseURL: baseURL,
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json',
                 'Authorization': `Bearer ${process.env.GH_API_TOKEN}`
             }
         }
