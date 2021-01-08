@@ -5,12 +5,12 @@ import {Follower} from "../types/follower_type";
 export class UserController {
     private http: ApiClient
 
-    private constructor(client: ApiClient) {
-        this.http = client
-    }
-
     static controller(client: ApiClient): UserController {
         return new UserController(client)
+    }
+
+    private constructor(client: ApiClient) {
+        this.http = client
     }
 
     async getUserInformation(): Promise<User> {
