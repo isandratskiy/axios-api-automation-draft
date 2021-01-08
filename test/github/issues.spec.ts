@@ -1,9 +1,10 @@
 import {ApiClient} from "../../src/github/lib/api_client";
 import * as fake from 'faker';
 import {Issue} from "../../src/github/types/issue_type";
+import {IssuesController} from "../../src/github/controller/issues_controller";
 
 describe("Issues controller", () => {
-    let http: ApiClient
+    let controller: IssuesController
     let issue: any
     let issueNumber: number
 
@@ -12,29 +13,26 @@ describe("Issues controller", () => {
             title: fake.random.uuid()
         }
 
-        http = ApiClient.api(`https://api.github.com/repos/isandratskiy`)
-        await http.post('axios-api-automation-draft/issues').body(issue).send()
+        let client = ApiClient.api(`https://api.github.com/repos/isandratskiy`)
+        controller = new IssuesController(client)
+        await controller.createIssue(issue)
     })
 
     test('should return created issue', async () => {
-        const issues: Issue[] = await http.get('axios-api-automation-draft/issues').send()
-        const receivedIssue: Issue = issues.find(it => it.title = issue.title)
+        const receivedIssue: Issue = await controller.getIssueWithTitle(issue.title)
         issueNumber = receivedIssue.number
         expect(receivedIssue.title).toBe(issue.title)
     });
 
     test('should update issue', async () => {
-        const issues: Issue[] = await http.get('axios-api-automation-draft/issues').send()
-        const receivedIssue: Issue = issues.find(it => it.title = issue.title)
+        const receivedIssue: Issue = await controller.getIssueWithTitle(issue.title)
         issueNumber = receivedIssue.number
     });
 
     afterEach(async () => {
-        await http.patch(`axios-api-automation-draft/issues/${issueNumber}`)
-            .body({
-                number: issueNumber,
-                state: 'closed'
-            })
-            .send()
+        await controller.updateIssue({
+            number: issueNumber,
+            state: 'closed'
+        })
     })
 });
