@@ -8,7 +8,7 @@ describe("User controller", () => {
 
     beforeEach(() => {
         let client = ApiClient.api(`https://api.github.com/user`)
-        controller = new UserController(client)
+        controller = UserController.controller(client)
     })
 
     test('should return list followers of the authenticated user', async () => {

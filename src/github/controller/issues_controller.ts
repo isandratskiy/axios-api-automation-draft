@@ -4,8 +4,12 @@ import {Issue} from "../types/issue_type";
 export class IssuesController {
     private http: ApiClient;
 
-    constructor(client: ApiClient) {
+    private constructor(client: ApiClient) {
         this.http = client
+    }
+
+    static controller(client: ApiClient): IssuesController {
+        return new IssuesController(client)
     }
 
     async createIssue(issue: any): Promise<void> {
@@ -24,6 +28,4 @@ export class IssuesController {
     async updateIssue(issue: any): Promise<void> {
         await this.http.patch(`axios-api-automation-draft/issues/${issue.number}`).body(issue).send()
     }
-
-
 }

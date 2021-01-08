@@ -3,6 +3,10 @@ import axios, {AxiosRequestConfig} from "axios";
 export class ApiClient {
     private options: AxiosRequestConfig
 
+    static api(baseURL: string): ApiClient {
+        return new ApiClient(baseURL)
+    }
+
     private constructor(baseURL: string) {
         this.options = {
             baseURL: baseURL,
@@ -12,10 +16,6 @@ export class ApiClient {
                 'Authorization': `Bearer ${process.env.GH_API_TOKEN}`
             }
         }
-    }
-
-    static api(baseURL: string): ApiClient {
-        return new ApiClient(baseURL)
     }
 
     post(path: string): ApiClient {

@@ -14,7 +14,7 @@ describe("Issues controller", () => {
         }
 
         let client = ApiClient.api(`https://api.github.com/repos/isandratskiy`)
-        controller = new IssuesController(client)
+        controller = IssuesController.controller(client)
         await controller.createIssue(issue)
     })
 
