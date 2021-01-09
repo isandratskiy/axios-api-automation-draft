@@ -17,3 +17,8 @@ jobs:
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
         run: npm cit
+
+      - name: Generate Allure report
+        run: allure generate
+
+
