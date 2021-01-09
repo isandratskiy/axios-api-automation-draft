@@ -19,6 +19,7 @@ jobs:
         run: npm cit
 
       - name: Generate Allure report
-        run: allure generate
+        run: node_modules/allure-commandline/dist/bin/allure generate
+
 
 
