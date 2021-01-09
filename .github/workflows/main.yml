@@ -10,6 +10,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      ALLURE_CLI: node_modules/allure-commandline/dist/bin/allure
     steps:
       - uses: actions/checkout@v1
 
@@ -19,7 +21,7 @@ jobs:
         run: npm cit
 
       - name: Generate Allure report
-        run: node_modules/allure-commandline/dist/bin/allure generate
+        run: ${ALLURE_CLI} generate
 
 
 
