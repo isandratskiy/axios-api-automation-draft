@@ -2,6 +2,7 @@ import {ApiClient} from "../../src/github/lib/api_client";
 import * as fake from 'faker';
 import {Issue} from "../../src/github/types/issue_type";
 import {IssuesController} from "../../src/github/controller/issues_controller";
+import {BASE_URL} from "../../src/github/constants";
 
 describe("Issues controller", () => {
     let controller: IssuesController
@@ -13,7 +14,7 @@ describe("Issues controller", () => {
             title: fake.random.uuid()
         }
 
-        let client = ApiClient.api(`https://api.github.com/repos/isandratskiy`)
+        let client = ApiClient.api(`${BASE_URL}/repos/isandratskiy`)
         controller = IssuesController.controller(client)
         await controller.createIssue(issue)
     })

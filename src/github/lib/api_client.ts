@@ -1,4 +1,5 @@
 import axios, {AxiosRequestConfig} from "axios";
+import {GITHUB_TOKEN} from "../constants";
 
 export class ApiClient {
     private options: AxiosRequestConfig
@@ -13,7 +14,7 @@ export class ApiClient {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `Bearer ${process.env.GH_API_TOKEN}`
+                'Authorization': `Bearer ${GITHUB_TOKEN}`
             }
         }
     }

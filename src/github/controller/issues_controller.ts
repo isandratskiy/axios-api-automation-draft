@@ -1,5 +1,8 @@
 import {ApiClient} from "../lib/api_client";
 import {Issue} from "../types/issue_type";
+import {REPO_NAME} from "../constants";
+
+const ISSUES_ENDPOINT = `${REPO_NAME}/issues`
 
 export class IssuesController {
     private http: ApiClient;
@@ -13,11 +16,11 @@ export class IssuesController {
     }
 
     async createIssue(issue: any): Promise<void> {
-        await this.http.post('axios-api-automation-draft/issues').body(issue).send()
+        await this.http.post(ISSUES_ENDPOINT).body(issue).send()
     }
 
     async getIssues(): Promise<Issue[]> {
-        return this.http.get('axios-api-automation-draft/issues').send()
+        return this.http.get(ISSUES_ENDPOINT).send()
     }
 
     async getIssueWithTitle(title: string): Promise<Issue> {
@@ -26,6 +29,6 @@ export class IssuesController {
     }
 
     async updateIssue(issue: any): Promise<void> {
-        await this.http.patch(`axios-api-automation-draft/issues/${issue.number}`).body(issue).send()
+        await this.http.patch(`${ISSUES_ENDPOINT}/${issue.number}`).body(issue).send()
     }
 }

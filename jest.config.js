@@ -5,5 +5,7 @@ module.exports = {
     ],
     transform: {
         "^.+\\.tsx?$": "ts-jest"
-    }
+    },
+    setupFilesAfterEnv: ["jest-allure/dist/setup"],
+    reporters: ["jest-spec-reporter"]
 }

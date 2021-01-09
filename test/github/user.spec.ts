@@ -2,12 +2,13 @@ import {ApiClient} from "../../src/github/lib/api_client";
 import {User} from "../../src/github/types/user_type";
 import {Follower} from "../../src/github/types/follower_type";
 import {UserController} from "../../src/github/controller/user_controller";
+import {BASE_URL} from "../../src/github/constants";
 
 describe("User controller", () => {
     let controller: UserController
 
     beforeEach(() => {
-        let client = ApiClient.api(`https://api.github.com/user`)
+        let client = ApiClient.api(`${BASE_URL}/user`)
         controller = UserController.controller(client)
     })
 
