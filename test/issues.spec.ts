@@ -1,8 +1,8 @@
-import {ApiClient} from "../../src/github/lib/api_client";
+import {ApiClient} from "../src/lib/api_client";
 import * as fake from 'faker';
-import {Issue} from "../../src/github/types/issue_type";
-import {IssuesController} from "../../src/github/controller/issues_controller";
-import {BASE_URL} from "../../src/github/constants";
+import {Issue} from "../src/types/issue_type";
+import {IssuesController} from "../src/controller/issues_controller";
+import {BASE_URL} from "../src/constants";
 
 describe("Issues controller", () => {
     let controller: IssuesController

@@ -1,8 +1,8 @@
-import {ApiClient} from "../../src/github/lib/api_client";
-import {User} from "../../src/github/types/user_type";
-import {Follower} from "../../src/github/types/follower_type";
-import {UserController} from "../../src/github/controller/user_controller";
-import {BASE_URL} from "../../src/github/constants";
+import {ApiClient} from "../src/lib/api_client";
+import {User} from "../src/types/user_type";
+import {Follower} from "../src/types/follower_type";
+import {UserController} from "../src/controller/user_controller";
+import {BASE_URL} from "../src/constants";
 
 describe("User controller", () => {
     let controller: UserController
