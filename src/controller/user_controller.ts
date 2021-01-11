@@ -14,10 +14,10 @@ export class UserController {
     }
 
     async getUserInformation(): Promise<User> {
-        return await this.http.get().send()
+        return await this.http.get('user').send()
     }
 
     async getFollowers(): Promise<Follower[]> {
-        return await this.http.get('followers').send()
+        return await this.http.get('user/followers').send()
     }
 }

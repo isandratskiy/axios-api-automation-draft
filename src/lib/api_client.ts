@@ -1,16 +1,12 @@
 import axios, {AxiosRequestConfig} from "axios";
-import {GITHUB_TOKEN} from "../constants";
+import {BASE_URL, GITHUB_TOKEN} from "../constants";
 
 export class ApiClient {
     private options: AxiosRequestConfig
 
-    static api(baseURL: string): ApiClient {
-        return new ApiClient(baseURL)
-    }
-
-    private constructor(baseURL: string) {
+    private constructor() {
         this.options = {
-            baseURL: baseURL,
+            baseURL: BASE_URL,
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/vnd.github.v3+json',
@@ -19,7 +15,11 @@ export class ApiClient {
         }
     }
 
-    post(path: string): ApiClient {
+    static api(): ApiClient {
+        return new ApiClient()
+    }
+
+    post(path?: string): ApiClient {
         this.options.url = path
         this.options.method = 'post'
         return this
@@ -38,7 +38,7 @@ export class ApiClient {
         return this
     }
 
-    patch(path: string) {
+    patch(path?: string) {
         this.options.url = path
         this.options.method = 'patch'
         return this

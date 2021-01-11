@@ -2,7 +2,7 @@ import {ApiClient} from "../lib/api_client";
 import {Issue} from "../types/issue_type";
 import {REPO_NAME} from "../constants";
 
-const ISSUES_ENDPOINT = `${REPO_NAME}/issues`
+const ISSUES_ENDPOINT = `repos/isandratskiy/${REPO_NAME}/issues`
 
 export class IssuesController {
     private http: ApiClient;

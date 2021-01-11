@@ -2,13 +2,12 @@ import {ApiClient} from "../src/lib/api_client";
 import {User} from "../src/types/user_type";
 import {Follower} from "../src/types/follower_type";
 import {UserController} from "../src/controller/user_controller";
-import {BASE_URL} from "../src/constants";
 
 describe("User controller", () => {
     let controller: UserController
 
     beforeEach(() => {
-        let client = ApiClient.api(`${BASE_URL}/user`)
+        let client = ApiClient.api()
         controller = UserController.controller(client)
     })
 
