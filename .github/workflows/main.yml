@@ -22,6 +22,3 @@ jobs:
 
       - name: Generate Allure report
         run: ${ALLURE_CLI} generate
-
-
-

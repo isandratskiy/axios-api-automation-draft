@@ -1,15 +1,12 @@
 {
-  "compilerOptions": {
-    "importHelpers": true,
-    "target": "ES2018",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "./dist/"
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+	"compilerOptions": {
+		"importHelpers": true,
+		"target": "ES2018",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"declaration": true,
+		"outDir": "./dist/"
+	},
+	"exclude": ["node_modules", "dist"]
 }
